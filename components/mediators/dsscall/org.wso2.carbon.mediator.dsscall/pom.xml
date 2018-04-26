@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <parent>
+        <groupId>org.wso2.carbon.mediation</groupId>
+        <artifactId>dsscall-mediator</artifactId>
+        <version>4.6.75-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <version>4.6.75-SNAPSHOT</version>
+    <artifactId>org.wso2.carbon.mediator.dsscall</artifactId>
+    <packaging>bundle</packaging>
+    <name>WSO2 Carbon - DSSCall Mediator</name>
+    <description>A custom wso2 products or solution</description>
+    <properties>
+        <CApp.type>lib/synapse/mediator</CApp.type>
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.synapse</groupId>
+            <artifactId>synapse-core</artifactId>
+            <version>2.1.7-wso2v7</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.wso2.carbon.data/org.wso2.carbon.dataservices.core -->
+        <dependency>
+            <groupId>org.wso2.carbon.data</groupId>
+            <artifactId>org.wso2.carbon.dataservices.core</artifactId>
+            <version>4.4.38</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2.wso2</groupId>
+            <artifactId>axis2</artifactId>
+            <version>1.6.1.wso2v14</version>
+        </dependency>
+
+    </dependencies>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>wso2-nexus</id>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>wso2-nexus</id>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.4</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Export-Package>org.wso2.carbon.mediator.dsscall</Export-Package>
+                        <Import-Package>
+                            org.osgi.framework,
+                            *;
+                            resolution:=optional
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                        <Fragment-Host>synapse-core</Fragment-Host>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
